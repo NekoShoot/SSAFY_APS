@@ -20,21 +20,29 @@ public class Solution {
 			// 가로 길이 항상 100, 상자 높이 채우기
 			// count Arr를 위해 최대값 구하기
 			int max = 0;
+			// 덤프를 위해 최소값 구하기
+			int min =101;
 			for(int i = 0; i < 100; i++) {
 				boxArr[i] = sc.nextInt();
 				if(boxArr[i] > max) max = boxArr[i];
-			}
+				if(boxArr[i] < min) min = boxArr[i];
+			}			
+			
+			// min, max는 제대로 들어옴!
 			
 			// 각 요소 값들을 countArr의 idx로 카운트
 			int[] cntArr = new int[max+1]; // idx 길이 때문에 max+1로		
-			for(int i = 0; i < cntArr.length-1; i++) {			
+			for(int i = 0; i < boxArr.length; i++) { // boxArr를 순회하며 넣는거니까.. boxArr.length만큼... 해야지...	
 				cntArr[boxArr[i]]++;
-			}
+			}						
+						
 			
-			int ltorCnt = 0;
-			int rtolCnt = 0;
+			
+			// Left to Right, Right to Left Count
+			int ltorCnt = min;
+			int rtolCnt = max;
 			// 덤프 작업 반복
-			for(int i = 0; i < k; i++) {
+			for(int i = 0; i < k; i++) {				
 				// 이미 cnt인덱스 해당 값이 0 이면 cnt++ continue;
 				if(cntArr[ltorCnt] == 0) {
 					ltorCnt++;
@@ -42,31 +50,34 @@ public class Solution {
 					continue;
 				}
 				
-				if(cntArr[cntArr.length - 1 - rtolCnt] == 0) {
-					rtolCnt++;
+				if(cntArr[rtolCnt] == 0) {
+					rtolCnt--;
 					i--;
 					continue;
-				}
-				
+				}			
+
 				// 평탄화 끝난 경우에 break
 				// how? 0 <= (cntArr.length - 1 - rtolCnt) - ltorCnt <= 1 
-				if(0 <= (cntArr.length - 1 - rtolCnt) - ltorCnt && (cntArr.length - 1 - rtolCnt) - ltorCnt <= 1) break;
+				if(0 <= rtolCnt - ltorCnt && rtolCnt - ltorCnt <= 1) break;
 				 
 				// 역방향 (가장 큰 거)
-				cntArr[cntArr.length - 1 - rtolCnt]--; // 가장 큰 값 1개를 줄인다
-				cntArr[cntArr.length - 2 - rtolCnt]++; // 그럼 그거보다 1작은 값의 개수가 1 늘어난다
+				cntArr[rtolCnt]--; // 가장 큰 값 1개를 줄인다
+				cntArr[rtolCnt-1]++; // 그럼 그거보다 1작은 값의 개수가 1 늘어난다
 				// 정방향 (가장 작은 거)
 				cntArr[ltorCnt]--; // 가장 작은 값 1개를 줄인다(박스 1개를 받았기 때문에)
 				cntArr[ltorCnt+1]++; // 그거보다 1큰 값의 개수가 1 늘어난다
-		
+				
+				if(i == k-1 && cntArr[rtolCnt] == 0) rtolCnt--;
+				if(i == k-1 && cntArr[ltorCnt] == 0) ltorCnt++;
 			}
+
 						
 			int flattenMax = -1;
 			int flattenMin = -1;
 			for(int i = 0; i < cntArr.length; i++) {
 				// 최저점 찾기
 				if(cntArr[i] != 0 && flattenMin == -1) {
-					flattenMin = i;				
+					flattenMin = i;		
 				}
 				// 최고점 찾기
 				if(cntArr[cntArr.length-1-i] != 0 && flattenMax == -1) {
@@ -74,10 +85,13 @@ public class Solution {
 				}
 				
 				// 덤프 작업 이후 최고점과 최저점 다 찾으면 break
-				if(flattenMax != -1 && flattenMin != -1) break;
+				if(flattenMax != -1 && flattenMin != -1) {
+					break;
+				}
 			}			
 			
 			int sub = flattenMax - flattenMin;
+			
 			System.out.printf("#%d %d\n", test_case, sub);
 		}
 
