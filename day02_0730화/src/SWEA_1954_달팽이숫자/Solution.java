@@ -1,4 +1,4 @@
-package SWEA_1954_달팽이숫자;
+package snailNumber;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,53 +6,90 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution {
-	public static void main(String[] args) throws IOException {	
-		System.setIn(new FileInputStream("./src/SWEA_1954_달팽이숫자/input.txt"));
+	public static void main(String[] args) throws IOException {
+		System.setIn(new FileInputStream("./src/snailNumber/input.txt"));
+		/*
+		 * 반시계 방향으로 출력
+		 * 델타 탐색
+		 * 하 -> 우 -> 상 -> 좌
+		 * case 1: arr.length보다 커지면 d+1;
+		 * case 2: 0이 아니면 d+1; 
+		 */
 		Scanner sc = new Scanner(System.in);
-		
 		int T = sc.nextInt();
-		// 테케 수 T 만큼 반복
-		for(int test_case = 1; test_case <= T; test_case++) {
+		
+		for(int t = 1; t < T; t++) {
 			int N = sc.nextInt();
 			
-			// NxN 배열 생성
-			int[][] snail = new int[N][N];
+			int[][] arr = new int[N][N];
 			
-			// 델타 배열 생성
-			int delRow[] = {0, -1, 0, 1}; // 우 하 좌 상
-			int delCol[] = {1, 0, -1, 0};
-						
-			int num = 1; // 각 칸에 넣을 값 생성
-			int d = 0; // 델타 배열 index
+			// 하 우 상 좌
+			int[] dr = { 1, 0, -1, 0 };
+			int[] dc = { 0, 1, 0, -1 };
 			
-			// 반복을 통해 값 채워주기
-			for(int r = 0; r < snail.length; r++) {
-				for(int c = 0; c < snail[0].length; c++) {							
-					int dr = delRow[d%4] + r;
-					int dc = delCol[d%4] + c;
+			int cnt = 1; // 채워 넣을 숫자
+			int d = 0; // dr과 dc의 index
+			// 탐색
+			int nr = 0;
+			int nc = 0;
+			for(int r = 0; r < N; r++) { // row
+				for(int c = 0; c < N; c++) { // column
+					arr[nr][nc] = cnt++;
+					// 경계 체크
+					if(nr + dr[d%4] > N-1 || nr + dr[d%4] < 0) // 경계를 넘으면 
+						d++; // 방향 전환
+						else if(nc + dc[d%4] > N-1 || nc + dc[d%4] < 0) 
+							d++; 
 					
-					System.out.println(dr + ", " + dc);
+					if(nr + dr[d%4] <= N-1 // 다음 값이 범위 안에 있고,
+							&& nr + dr[d%4] >= 0
+							&& nc + dc[d%4] <= N-1 							 
+							&& nc + dc[d%4] >= 0) { 
+						// 다음 값이 0이 아니라면
+						if(arr[nr + dr[d%4]][nc + dc[d%4]] != 0) 
+							d++;
+					}
+								
+					// 이동
+					nr += dr[d%4];
+					nc += dc[d%4];
 					
-					// 다음 배열이 경계를 벗어나려 하면 d++로 방향 회전
-					if(0 > dr || dr > snail.length - 1) {
-						d++;
-					} else if(0 > dc || dc > snail[0].length - 1 ) {
-						d++;
-					} else if(0 < dr && dr < snail.length - 1 && delRow[dr] != 0) { // 다음 배열의 값이 0이 아니라면(이미 채워진 칸이면) d++로 방향 회전
-						d++;						
-					} else if(0 < dc && dc < snail[0].length - 1 && delCol[dc] != 0) {
-						d++;		
-					}	
-						
-					snail[r][c] = num++;				
-										
 				}
 			}
 			
+			//String과 + 연산자를 이용한 출력
+			long startPl = System.nanoTime();
+			String result = "";
+			for(int i = 0; i < N; i++) {
+				for(int j = 0; j < N; j++) {
+					if(j < N-1) { // 한 줄 출력할 때 숫자 사이에 공백
+						result += arr[i][j] + " ";
+					} else if(j == N-1) {
+						result += arr[i][j] + "\n";
+					}
+				}
+			}
 			
-			System.out.printf("#%s\n", test_case);
+			long endPl = System.nanoTime();
+			System.out.printf(result +"+연산자의 수행시간은: %d\n", endPl-startPl);
+
+			
+			// StringBuilder를 이용한 출력
+			long startSB = System.nanoTime();
+			StringBuilder sb = new StringBuilder();
+			
+			for(int i = 0; i < N; i++) {				
+				for(int j = 0; j < N; j++) {
+					if(j < N-1) {
+						sb.append(arr[i][j]).append(" ");
+					} else if(j == N-1) {
+						sb.append(arr[i][j]).append("\n");
+					}
+				}
+			}
+			long endSB = System.nanoTime();			
+			System.out.printf(sb.toString()+"SB의 수행시간은: %d\n", (endSB-startSB));
 		}
-			
-			
+		
 	}
 }
