@@ -1,9 +1,9 @@
-package Queue_구현;
+package SWEA_7102_준홍이의카드놀이;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Solution<T> {
+public class Queue<T> {
 	// 선형 큐 동적 구현
 	/*
 	 * - front: 삭제만
@@ -22,9 +22,9 @@ public class Solution<T> {
 	int rear = -1;
 	
 	// 기본 생성자
-	public Solution() {}
+	public Queue() {}
 	
-	public Solution(List<T> queue) {
+	public Queue(List<T> queue) {
 		this.queue = queue;
 	}
 	
@@ -62,8 +62,8 @@ public class Solution<T> {
 			System.out.println("큐가 비어있어 값을 꺼낼 수 없습니다.");
 			return null;
 		}
-		
-		return queue.get(++front);		
+				
+		return queue.get(++front);
 	}
 	
 	public T Qpeek() {
