@@ -1,7 +1,6 @@
 package SWEA_7102_준홍이의카드놀이;
 
-import java.util.LinkedList;
-import java.util.List;
+import Queue_구현.Queue;
 
 public class Solution {
 	public static void main(String[] args) {
