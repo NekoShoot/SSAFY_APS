@@ -2,7 +2,34 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/경진대회1차_0809.iml" filepath="$PROJECT_DIR$/경진대회1차_0809.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.org.eclipse.egit.core.cmp.iml" filepath="$PROJECT_DIR$/.org.eclipse.egit.core.cmp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10163.iml" filepath="$PROJECT_DIR$/10163.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10828.iml" filepath="$PROJECT_DIR$/10828.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1107.iml" filepath="$PROJECT_DIR$/1107.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1244.iml" filepath="$PROJECT_DIR$/1244.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13300.iml" filepath="$PROJECT_DIR$/13300.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14501.iml" filepath="$PROJECT_DIR$/14501.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14889.iml" filepath="$PROJECT_DIR$/14889.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1592.iml" filepath="$PROJECT_DIR$/1592.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1759.iml" filepath="$PROJECT_DIR$/1759.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1984.iml" filepath="$PROJECT_DIR$/1984.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2225.iml" filepath="$PROJECT_DIR$/2225.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2292.iml" filepath="$PROJECT_DIR$/2292.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2309.iml" filepath="$PROJECT_DIR$/2309.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2477.iml" filepath="$PROJECT_DIR$/2477.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2529.iml" filepath="$PROJECT_DIR$/2529.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2563.iml" filepath="$PROJECT_DIR$/2563.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2798.iml" filepath="$PROJECT_DIR$/2798.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2805_농작물.iml" filepath="$PROJECT_DIR$/2805_농작물.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2810.iml" filepath="$PROJECT_DIR$/2810.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2851.iml" filepath="$PROJECT_DIR$/2851.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2941_CroatiaAlphabet.iml" filepath="$PROJECT_DIR$/2941_CroatiaAlphabet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3052.iml" filepath="$PROJECT_DIR$/3052.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3985.iml" filepath="$PROJECT_DIR$/3985.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6064.iml" filepath="$PROJECT_DIR$/6064.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8320.iml" filepath="$PROJECT_DIR$/8320.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8958.iml" filepath="$PROJECT_DIR$/8958.iml" />
+      <module fileurl="file://$PROJECT_DIR$/9095.iml" filepath="$PROJECT_DIR$/9095.iml" />
     </modules>
   </component>
 </project>
