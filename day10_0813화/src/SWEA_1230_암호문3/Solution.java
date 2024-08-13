@@ -12,12 +12,12 @@ public class Solution {
 	public static void main(String[] args) throws IOException {
 		System.setIn(new FileInputStream("./src/SWEA_1230_암호문3/input.txt"));
 		Scanner sc = new Scanner(System.in);
-		StringBuilder sb = new StringBuilder();
-		
-		List<Integer> cypherList = new LinkedList<>();
+		StringBuilder sb = new StringBuilder();		
 		
 		int T = 10;
 		for(int test_case = 1; test_case <= T; test_case++) {
+			List<Integer> cypherList = new LinkedList<>();
+
 			int N = sc.nextInt(); // 암호문 개수 
 			for(int i = 0; i < N; i++) { // 암호문 뭉치
 				cypherList.add(sc.nextInt());
