@@ -71,7 +71,8 @@ public class Solution {
 				}
 				
 				// 시계방향으로 한 칸 회전
-				queue.offer(queue.poll());				
+				queue.offer(queue.poll());
+				System.out.println(queue);
 			}
 			
 
