@@ -77,7 +77,6 @@ public class Solution {
 
 //			// 정렬을 위해 set -> arr로 바꾸고 그 과정에서 16진수를 10진수로 바꾸기			
 			String[] tenDigitNumbers =  set.toArray(new String[0]);
-			System.out.println(Arrays.toString(tenDigitNumbers));
 			
 			int[] tenDigits = new int[tenDigitNumbers.length];
 			int cnt = 0;
@@ -85,14 +84,12 @@ public class Solution {
 				tenDigits[cnt] = ch16to10(tenDigitNumber);
 				cnt++;
 			}
-			
-			System.out.println(Arrays.toString(tenDigits));
+
 			// 정렬
 			reverseSort(tenDigits);
-//			System.out.println(Arrays.toString(tenDigitNumbers));
-//
-//			int result = tenDigitNumbers[K-1];			
-//			System.out.printf("#%d %d\n", test_case, result);
+
+			int result = tenDigits[K-1];
+			System.out.printf("#%d %d\n", test_case, result);
 		}
 		
 	}
@@ -112,7 +109,7 @@ public class Solution {
 	} 
 
 	// 16진수를 10진수로
-	// A:11 B:12 C:13 D:14 F:15
+	// A:10 B:11 C:12 D:13 E:14 F:15
 	static int ch16to10(String number) {
 		int result = 0;
 		// 역방향 순회로 곱해서 더해주기
@@ -125,30 +122,17 @@ public class Solution {
 				result += tenDigitNum;
 				
 			} else {
-				int tenDigitNum = 0;
-				switch(num) {
-					case 'A': 
-						tenDigitNum = 11 * multiple;
-						break;
-						
-					case 'B':
-						tenDigitNum = 12 * multiple;
-						break;
-						
-					case 'C':
-						tenDigitNum = 13 * multiple;
-						break;
-						
-					case 'D':
-						tenDigitNum = 14 * multiple;
-						break;
-						
-					case 'F':
-						tenDigitNum = 15 * multiple;
-						break;
-				}	
-				
-				result += tenDigitNum;
+				int tenDigitNum = switch (num) {
+                    case 'A' -> 10 * multiple;
+                    case 'B' -> 11 * multiple;
+                    case 'C' -> 12 * multiple;
+                    case 'D' -> 13 * multiple;
+                    case 'E' -> 14 * multiple;
+                    case 'F' -> 15 * multiple;
+                    default -> 0;
+                };
+
+                result += tenDigitNum;
 			}
 			
 		}
