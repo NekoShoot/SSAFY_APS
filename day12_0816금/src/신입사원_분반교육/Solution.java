@@ -84,7 +84,7 @@ public class Solution {
 						break;
 					}				
 				}
-				
+
 				int score1 = -1;
 				int stud1 = -1;			
 				// 2. score1 stud1
@@ -94,22 +94,22 @@ public class Solution {
 						stud1 = scoreArr[i] - stud2;
 						break;
 					}
-				}							
-						
+				}
+
 				int score0 = -1;
 				int stud0 = -1;
 				// 3. socre0 stud0
 				for(int i = score1+1; i < 101; i++) {
 					if(scoreArr[i] - (stud1+stud2) >= min) {
 						score0 = 100 - i;
-						stud0 = scoreArr[i] - (stud1+stud2);
+						stud0 = scoreArr[100] - (stud1+stud2);
 						break;
 					}
 				}
 
-				
 				// max 넘으면 불가능
 				if(stud0 > max) continue;
+				// k가 0인데 stud0이 min보다 작으면 불가능
 				if(k == 0 && stud0 < min) {
 					minSub = -1;
 					break;
@@ -117,17 +117,17 @@ public class Solution {
 					
 				// 학생수는 stud에 저장돼있음
 				// 최소 최대 값 찾기
-				int studTmpMin = stud2 <= stud1 ? stud2 : stud1;
-				int studMin = studTmpMin <= stud0 ? studTmpMin : stud0;
-				int studTmpMax = stud2 >= stud1 ? stud2 : stud1;
-				int studMax = studTmpMax >= stud0 ? studTmpMax : stud0;
-				
+				int studTmpMin = Math.min(stud2, stud1);
+				int studMin = Math.min(studTmpMin, stud0);
+				int studTmpMax = Math.max(stud2, stud1);
+				int studMax = Math.max(studTmpMax, stud0);
+
 				// 가장 많은 분반과 적은 분반 차이 값
 				int sub = studMax - studMin;
 				if(sub < minSub) minSub = sub;
 			}
-			
-			System.out.printf("#%d %d\n", test_case, minSub);			
+
+			System.out.printf("#%d %d\n", test_case, minSub);
 		}		
 	}
 
