@@ -1,3 +1,5 @@
+package IM_보물상자_비밀번호;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
