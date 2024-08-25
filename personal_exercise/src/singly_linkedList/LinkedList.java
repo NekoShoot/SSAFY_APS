@@ -39,7 +39,7 @@ class SinglyLinkedList {
 		
 		// 연결이 끊기지 않게 새 노드부터 연결
 		newNode.link = current.link;
-		current.link = newNode.link;
+		current.link = newNode;
 		
 		size++;
 	}
